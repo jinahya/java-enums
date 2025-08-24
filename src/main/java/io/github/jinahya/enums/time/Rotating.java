@@ -1,6 +1,4 @@
-package com.github.jinahya.sexagenarycycle;
-
-import javax.validation.constraints.NotNull;
+package io.github.jinahya.enums.time;
 
 interface Rotating<T extends Rotating<T>> {
 
@@ -9,7 +7,6 @@ interface Rotating<T extends Rotating<T>> {
      *
      * @return the previous value of this value.
      */
-    @NotNull
     T getPrevious();
 
     /**
@@ -17,6 +14,5 @@ interface Rotating<T extends Rotating<T>> {
      *
      * @return the next value of this value.
      */
-    @NotNull
     T getNext();
 }

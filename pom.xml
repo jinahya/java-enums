@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.github.jinahya</groupId>
+    <groupId>io.github.jinahya</groupId>
     <artifactId>jinahya-parent</artifactId>
-    <version>0.8.6</version>
+    <version>1.0.0</version>
   </parent>
 
-  <artifactId>sexagenary-cycle</artifactId>
+  <artifactId>java-enums</artifactId>
   <version>0.0.9-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>${project.artifactId}</name>
-  <description>a small library for 干支</description>
+  <description>enums</description>
   <url>https://github.com/jinahya/${project.artifactId}</url>
-  <inceptionYear>2020</inceptionYear>
+  <inceptionYear>2025</inceptionYear>
   <organization>
     <name>Jinahya, Inc.</name>
     <url>https://jinahya.com</url>
@@ -47,15 +46,16 @@
     <maven.compiler.testTarget>${maven.compiler.testSource}</maven.compiler.testTarget>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.organization>jinahya-github</sonar.organization>
-    <sonar.projectKey>jinahya_sexagenary-cycle</sonar.projectKey>
-    <version.ch.qos.logback>1.2.3</version.ch.qos.logback>
+    <!--    <sonar.projectKey>jinahya_sexagenary-cycle</sonar.projectKey>-->
+    <version.ch.qos.logback>1.5.18</version.ch.qos.logback>
     <version.jakarta.validation>2.0.2</version.jakarta.validation>
     <version.maven-failsafe>${version.maven-surefire}</version.maven-failsafe>
     <version.maven-surefire>3.0.0-M5</version.maven-surefire>
-    <version.org.assert.jassertj-core>3.18.1</version.org.assert.jassertj-core>
-    <version.org.junit.jupiter>5.7.0</version.org.junit.jupiter>
-    <version.org.mockito>3.6.28</version.org.mockito>
-    <version.org.projectlombok>1.18.16</version.org.projectlombok>
+    <!-- https://central.sonatype.com/artifact/org.assertj/assertj-core/versions -->
+    <version.org.assert.jassertj-core>4.0.0-M1</version.org.assert.jassertj-core>
+    <version.org.junit.jupiter>6.0.0-RC1</version.org.junit.jupiter>
+    <version.org.mockito>5.19.0</version.org.mockito>
+    <version.org.projectlombok>1.18.38</version.org.projectlombok>
   </properties>
 
   <dependencyManagement>
@@ -75,16 +75,16 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>jakarta.validation</groupId>
-      <artifactId>jakarta.validation-api</artifactId>
-      <version>${version.jakarta.validation}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
       <version>${version.org.assert.jassertj-core}</version>
       <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>net.bytebuddy</groupId>
+          <artifactId>byte-buddy</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -167,7 +167,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.14.0</version>
         <configuration>
           <compilerArgs>
             <arg>-Xlint</arg>
@@ -233,7 +233,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.4.2</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -385,17 +385,6 @@
           </plugin>
         </plugins>
       </build>
-    </profile>
-    <profile>
-      <id>version-alignment-spring-boot-2_4_1</id>
-      <properties>
-        <r.ch.qos.logback>1.2.3</r.ch.qos.logback>
-        <version.jakarta.validation>2.0.2</version.jakarta.validation>
-        <version.org.assert.jassertj-core>3.18.1</version.org.assert.jassertj-core>
-        <version.org.junit.jupiter>5.7.0</version.org.junit.jupiter>
-        <version.org.mockito>3.6.28</version.org.mockito>
-        <version.org.projectlombok>1.18.16</version.org.projectlombok>
-      </properties>
     </profile>
   </profiles>
 </project>

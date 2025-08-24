@@ -1,4 +1,4 @@
-package com.github.jinahya.sexagenarycycle;
+package io.github.jinahya.enums.time;
 
 import java.util.Objects;
 import java.util.function.Function;

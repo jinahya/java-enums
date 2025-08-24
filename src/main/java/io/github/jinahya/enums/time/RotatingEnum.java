@@ -1,6 +1,5 @@
-package com.github.jinahya.sexagenarycycle;
+package io.github.jinahya.enums.time;
 
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
 import java.util.function.UnaryOperator;
 
@@ -39,7 +38,7 @@ interface RotatingEnum<E extends Enum<E> & RotatingEnum<E>> extends Rotating<E> 
      */
     @SuppressWarnings({"unchecked"})
     @Override
-    default @NotNull E getPrevious() {
+    default E getPrevious() {
         return RollingEnumHelper.getPrevious((E) this, previousMapper((Class<E>) getClass()));
     }
 
@@ -50,7 +49,7 @@ interface RotatingEnum<E extends Enum<E> & RotatingEnum<E>> extends Rotating<E> 
      */
     @SuppressWarnings({"unchecked"})
     @Override
-    default @NotNull E getNext() {
+    default E getNext() {
         return RollingEnumHelper.getNext((E) this, nextMapper((Class<E>) getClass()));
     }
 }
