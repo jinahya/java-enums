@@ -8,7 +8,7 @@
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>java-enums</artifactId>
+  <artifactId>jinahya-enums</artifactId>
   <version>0.0.9-SNAPSHOT</version>
   <packaging>jar</packaging>
 
