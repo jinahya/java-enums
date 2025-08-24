@@ -40,10 +40,14 @@
   </issueManagement>
 
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.resource.encoding>UTF-8</maven.resource.encoding>
+    <maven.reporting.outputEncoding>UTF-8</maven.reporting.outputEncoding>
+    <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+    <maven.compiler.release>${maven.compiler.source}</maven.compiler.release>
     <maven.compiler.testSource>${maven.compiler.source}</maven.compiler.testSource>
     <maven.compiler.testTarget>${maven.compiler.testSource}</maven.compiler.testTarget>
+    <maven.compiler.testRelease>${maven.compiler.testTarget}</maven.compiler.testRelease>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     <sonar.organization>jinahya-github</sonar.organization>
     <!--    <sonar.projectKey>jinahya_sexagenary-cycle</sonar.projectKey>-->
@@ -159,7 +163,7 @@
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.6</version>
+          <version>0.8.13</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -253,28 +257,6 @@
         <configuration>
           <trimStackTrace>false</trimStackTrace>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.18</version>
-        <executions>
-          <execution>
-            <id>check-signature-java18:1.0</id>
-            <phase>process-classes</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <configuration>
-              <skip>true</skip>
-              <signature>
-                <groupId>org.codehaus.mojo.signature</groupId>
-                <artifactId>java18</artifactId>
-                <version>1.0</version>
-              </signature>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
