@@ -1,5 +1,7 @@
 package io.github.jinahya.enums.oridnal;
 
+import io.github.jinahya.enums.philocophy.陰陽;
+
 /**
  * Constants of <a href="https://en.wikipedia.org/wiki/Heavenly_Stems">the ten Heavenly Stems</a>.
  *
@@ -27,4 +29,13 @@ public enum 天干 {
     壬, // 임
 
     癸; // 계
+
+    // -----------------------------------------------------------------------------------------------------------------
+    陰陽 陰陽() {
+        if (ordinal() % 2 == 0) {
+            return 陰陽.陽;
+        } else {
+            return 陰陽.陰;
+        }
+    }
 }

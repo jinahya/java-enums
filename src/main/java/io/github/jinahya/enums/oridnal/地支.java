@@ -1,5 +1,7 @@
 package io.github.jinahya.enums.oridnal;
 
+import io.github.jinahya.enums.philocophy.陰陽;
+
 /**
  * Constants of <a href="https://en.wikipedia.org/wiki/Earthly_Branches">the twelve Earthly Branches</a>.
  *
@@ -31,4 +33,13 @@ public enum 地支 {
     戌, // 술
 
     亥; // 해
+
+    // -----------------------------------------------------------------------------------------------------------------
+    陰陽 陰陽() {
+        if (ordinal() % 2 == 0) {
+            return 陰陽.陽;
+        } else {
+            return 陰陽.陰;
+        }
+    }
 }
