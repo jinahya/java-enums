@@ -31,6 +31,12 @@ public enum 天干 {
     癸; // 계
 
     // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the value of {@link 陰陽} associated with this value.
+     *
+     * @return the value of {@link 陰陽} associated with this value.
+     */
     陰陽 陰陽() {
         if (ordinal() % 2 == 0) {
             return 陰陽.陽;
