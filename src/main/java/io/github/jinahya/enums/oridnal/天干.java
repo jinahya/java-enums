@@ -38,10 +38,12 @@ public enum 天干 {
      * @return the value of {@link 陰陽} associated with this value.
      */
     陰陽 陰陽() {
-        if (ordinal() % 2 == 0) {
-            return 陰陽.陽;
-        } else {
-            return 陰陽.陰;
+        if (陰陽 == null) {
+            陰陽 = ordinal() % 2 == 0 ? 陰陽.陽 : 陰陽.陰;
         }
+        return 陰陽;
     }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    private 陰陽 陰陽;
 }

@@ -2,13 +2,7 @@ package io.github.jinahya.enums.time;
 
 import java.time.Month;
 import java.time.MonthDay;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -170,13 +164,13 @@ public enum 二十四節氣 {
     // -----------------------------------------------------------------------------------------------------------------
     public static 二十四節氣 valueOfLongitude(final int longitude) {
         return Optional.ofNullable(LONGITUDES_AND_VALUES.get(longitude))
-                .orElseThrow(() -> new IllegalArgumentException("no value for month(" + longitude + ")"));
+                .orElseThrow(() -> new IllegalArgumentException("no value for longitude(" + longitude + ")"));
     }
 
     public static 二十四節氣 valueOfDate(final MonthDay date) {
         Objects.requireNonNull(date, "date is null");
         return Optional.ofNullable(DATES_AND_VALUES.get(date))
-                .orElseThrow(() -> new IllegalArgumentException("no value for month(" + date + ")"));
+                .orElseThrow(() -> new IllegalArgumentException("no value for date(" + date + ")"));
     }
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
