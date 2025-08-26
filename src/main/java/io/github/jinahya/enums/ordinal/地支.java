@@ -1,9 +1,11 @@
 package io.github.jinahya.enums.ordinal;
 
 import java.util.Locale;
+import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Constants of <a href="https://en.wikipedia.org/wiki/Earthly_Branches">the twelve Earthly Branches</a>.
@@ -45,13 +47,14 @@ public enum 地支 {
     // -----------------------------------------------------------------------------------------------------------------
     public String name(final Locale locale) {
         Objects.requireNonNull(locale, "locale is null");
-        final var baseName = getClass().getName();
-        try {
-            final var bundle = ResourceBundle.getBundle(baseName, locale);
-            return bundle.getString(name());
-        } catch (final MissingResourceException mre) {
-            return name();
-        }
+        return NAMES.computeIfAbsent(locale, l -> {
+            try {
+                final var bundle = ResourceBundle.getBundle(getClass().getName(), locale);
+                return bundle.getString(name());
+            } catch (final MissingResourceException mre) {
+                return name();
+            }
+        });
     }
 
     /**
@@ -62,12 +65,14 @@ public enum 地支 {
     io.github.jinahya.enums.philosophy.陰陽 陰陽() {
         if (陰陽 == null) {
             陰陽 = ordinal() % 2 == 0
-                    ? io.github.jinahya.enums.philosophy.陰陽.陽
-                    : io.github.jinahya.enums.philosophy.陰陽.陰;
+                   ? io.github.jinahya.enums.philosophy.陰陽.陽
+                   : io.github.jinahya.enums.philosophy.陰陽.陰;
         }
         return 陰陽;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     private io.github.jinahya.enums.philosophy.陰陽 陰陽;
+
+    private final Map<Locale, String> NAMES = new ConcurrentHashMap<>();
 }
