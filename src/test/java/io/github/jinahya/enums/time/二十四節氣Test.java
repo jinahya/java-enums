@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.time.MonthDay;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -108,10 +109,25 @@ class 二十四節氣Test {
     @DisplayName("zh_TW")
     @MethodSource({"valueStream"})
     @ParameterizedTest
-    void __zh_TW(final 二十四節氣 value) {
-        final var locale = Locale.of("zh", "TW");
+    void __zh_CN(final 二十四節氣 value) {
+        final var locale = ThreadLocalRandom.current().nextBoolean()
+                ? Locale.SIMPLIFIED_CHINESE
+                : Locale.of("zh", "CN");
         final var name = value.name(locale);
         log.debug("value: {}, name: {}", value, name);
+        assertThat(name).isEqualTo(value.name());
+    }
+
+    @DisplayName("zh_TW")
+    @MethodSource({"valueStream"})
+    @ParameterizedTest
+    void __zh_TW(final 二十四節氣 value) {
+        final var locale = ThreadLocalRandom.current().nextBoolean()
+                ? Locale.TRADITIONAL_CHINESE
+                : Locale.of("zh", "TW");
+        final var name = value.name(locale);
+        log.debug("value: {}, name: {}", value, name);
+
     }
 
     @DisplayName("vi")

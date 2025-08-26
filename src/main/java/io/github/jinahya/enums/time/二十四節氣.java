@@ -180,6 +180,7 @@ public enum 二十四節氣 {
 
     // -----------------------------------------------------------------------------------------------------------------
     public String name(final Locale locale) {
+        Objects.requireNonNull(locale, "locale is null");
         try {
             final var bundle = ResourceBundle.getBundle(getClass().getName(), locale);
             return bundle.getString(name());
