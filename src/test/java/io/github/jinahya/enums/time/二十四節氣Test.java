@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @SuppressWarnings({
+        "NonAsciiCharacters",
         "java:S3577" // Test classes should comply with a naming convention
 })
 class 二十四節氣Test {
@@ -58,7 +59,7 @@ class 二十四節氣Test {
         assertThat(二十四節氣.valueOfDate(date)).isSameAs(value);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
     二十四節氣Test() {
         super();
     }
