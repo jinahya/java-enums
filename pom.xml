@@ -52,7 +52,6 @@
     <sonar.organization>jinahya-github</sonar.organization>
     <!--    <sonar.projectKey>jinahya_sexagenary-cycle</sonar.projectKey>-->
     <version.ch.qos.logback>1.5.18</version.ch.qos.logback>
-    <version.jakarta.validation>2.0.2</version.jakarta.validation>
     <version.maven-failsafe>${version.maven-surefire}</version.maven-failsafe>
     <version.maven-surefire>3.0.0-M5</version.maven-surefire>
     <!-- https://central.sonatype.com/artifact/org.assertj/assertj-core/versions -->
@@ -140,9 +139,6 @@
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>3.2.0</version>
           <configuration>
-            <links>
-              <link>https://javadoc.io/doc/jakarta.validation/jakarta.validation-api/latest/</link>
-            </links>
           </configuration>
         </plugin>
         <plugin>
