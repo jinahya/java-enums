@@ -45,9 +45,9 @@ public enum 地支 {
     亥; // 해
 
     // -----------------------------------------------------------------------------------------------------------------
-    public String displayName(final Locale locale) {
+    public String name(final Locale locale) {
         Objects.requireNonNull(locale, "locale is null");
-        return localesAndDisplayNames.computeIfAbsent(locale, l -> {
+        return localesAndNames.computeIfAbsent(locale, l -> {
             try {
                 final var bundle = ResourceBundle.getBundle(getClass().getName(), locale);
                 return bundle.getString(name());
@@ -74,5 +74,5 @@ public enum 地支 {
     // -----------------------------------------------------------------------------------------------------------------
     private io.github.jinahya.enums.philosophy.陰陽 陰陽;
 
-    private final Map<Locale, String> localesAndDisplayNames = new ConcurrentHashMap<>();
+    private final Map<Locale, String> localesAndNames = new ConcurrentHashMap<>();
 }

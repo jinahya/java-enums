@@ -2,7 +2,11 @@ package io.github.jinahya.enums.philosophy;
 
 import java.time.DayOfWeek;
 import java.time.format.TextStyle;
-import java.util.*;
+import java.util.Locale;
+import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -74,7 +78,7 @@ public enum 五行 {
                 dow -> {
                     final var name = dow.getDisplayName(TextStyle.NARROW, Locale.KOREAN);
                     for (final var value : values()) {
-                        if (name.equals(value.displayName(Locale.KOREAN))) {
+                        if (name.equals(value.name(Locale.KOREAN))) {
                             return value;
                         }
                     }
@@ -84,9 +88,9 @@ public enum 五行 {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    public String displayName(final Locale locale) {
+    public String name(final Locale locale) {
         Objects.requireNonNull(locale, "locale is null");
-        return localesAndDisplayNames.computeIfAbsent(locale, l -> {
+        return localesAndNames.computeIfAbsent(locale, l -> {
             try {
                 final var bundle = ResourceBundle.getBundle(getClass().getName(), locale);
                 return bundle.getString(name());
@@ -97,5 +101,5 @@ public enum 五行 {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    private final Map<Locale, String> localesAndDisplayNames = new ConcurrentHashMap<>();
+    private final Map<Locale, String> localesAndNames = new ConcurrentHashMap<>();
 }

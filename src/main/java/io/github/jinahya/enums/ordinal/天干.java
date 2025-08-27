@@ -1,6 +1,10 @@
 package io.github.jinahya.enums.ordinal;
 
-import java.util.*;
+import java.util.Locale;
+import java.util.Map;
+import java.util.MissingResourceException;
+import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -37,9 +41,9 @@ public enum 天干 {
     癸; // 계
 
     // -----------------------------------------------------------------------------------------------------------------
-    public String displayName(final Locale locale) {
+    public String name(final Locale locale) {
         Objects.requireNonNull(locale, "locale is null");
-        return localesAndDisplayNames.computeIfAbsent(locale, l -> {
+        return localesAndNames.computeIfAbsent(locale, l -> {
             try {
                 final var bundle = ResourceBundle.getBundle(getClass().getName(), l);
                 return bundle.getString(name());
@@ -57,8 +61,8 @@ public enum 天干 {
     io.github.jinahya.enums.philosophy.陰陽 陰陽() {
         if (陰陽 == null) {
             陰陽 = ordinal() % 2 == 0
-                    ? io.github.jinahya.enums.philosophy.陰陽.陽
-                    : io.github.jinahya.enums.philosophy.陰陽.陰;
+                   ? io.github.jinahya.enums.philosophy.陰陽.陽
+                   : io.github.jinahya.enums.philosophy.陰陽.陰;
         }
         return 陰陽;
     }
@@ -66,5 +70,5 @@ public enum 天干 {
     // -----------------------------------------------------------------------------------------------------------------
     private io.github.jinahya.enums.philosophy.陰陽 陰陽;
 
-    private final Map<Locale, String> localesAndDisplayNames = new ConcurrentHashMap<>();
+    private final Map<Locale, String> localesAndNames = new ConcurrentHashMap<>();
 }

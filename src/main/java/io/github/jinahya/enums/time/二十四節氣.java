@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
  * @see <a href="https://en.wikipedia.org/wiki/Solar_term">Solar term</a>
  */
 @SuppressWarnings({
+        "NonAsciiCharacters",
         "java:S115" // Constant names should comply with a naming convention
 })
 public enum 二十四節氣 {

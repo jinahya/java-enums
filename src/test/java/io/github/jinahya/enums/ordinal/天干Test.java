@@ -31,9 +31,9 @@ class 天干Test {
     // -----------------------------------------------------------------------------------------------------------------
     @MethodSource({"valueAndLocaleArgumentsStream"})
     @ParameterizedTest
-    void displayName__(final 天干 value, final Locale locale) {
+    void name__(final 天干 value, final Locale locale) {
         assertThatCode(() -> {
-            final var name = value.displayName(locale);
+            final var name = value.name(locale);
             log.debug("value: {}, name: {}, locale: {}", value, name, locale);
         });
     }
@@ -42,9 +42,9 @@ class 天干Test {
     @DisplayName("ko")
     @MethodSource({"valueStream"})
     @ParameterizedTest
-    void displayName__ko(final 天干 value) {
+    void name__ko(final 天干 value) {
         final var locale = ThreadLocalRandom.current().nextBoolean() ? Locale.of("ko") : Locale.KOREAN;
-        final var name = value.displayName(locale);
+        final var name = value.name(locale);
         log.debug("value: {}, name: {}", value, name);
     }
 }

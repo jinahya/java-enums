@@ -44,9 +44,9 @@ class 陰陽Test {
     @DisplayName("ko")
     @MethodSource({"valueStream"})
     @ParameterizedTest
-    void displayName__ko(final 陰陽 value) {
+    void name__ko(final 陰陽 value) {
         final var locale = ThreadLocalRandom.current().nextBoolean() ? Locale.of("ko") : Locale.KOREAN;
-        final var name = value.displayName(locale);
+        final var name = value.name(locale);
         log.debug("value: {}, name: {}", value, name);
     }
 
@@ -55,9 +55,9 @@ class 陰陽Test {
     @ParameterizedTest
     void __zh_CN(final 陰陽 value) {
         final var locale = ThreadLocalRandom.current().nextBoolean()
-                ? Locale.SIMPLIFIED_CHINESE
-                : Locale.of("zh", "CN");
-        final var name = value.displayName(locale);
+                           ? Locale.SIMPLIFIED_CHINESE
+                           : Locale.of("zh", "CN");
+        final var name = value.name(locale);
         log.debug("value: {}, name: {}", value, name);
     }
 
@@ -66,9 +66,9 @@ class 陰陽Test {
     @ParameterizedTest
     void __zh_TW(final 陰陽 value) {
         final var locale = ThreadLocalRandom.current().nextBoolean()
-                ? Locale.TRADITIONAL_CHINESE
-                : Locale.of("zh", "TW");
-        final var name = value.displayName(locale);
+                           ? Locale.TRADITIONAL_CHINESE
+                           : Locale.of("zh", "TW");
+        final var name = value.name(locale);
         log.debug("value: {}, name: {}", value, name);
         assertThat(name).isEqualTo(value.name());
     }
