@@ -1,9 +1,7 @@
 package io.github.jinahya.enums.ordinal;
 
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Constants of <a href="https://en.wikipedia.org/wiki/Heavenly_Stems">the ten Heavenly Stems</a>.
@@ -39,16 +37,16 @@ public enum 天干 {
     癸; // 계
 
     // -----------------------------------------------------------------------------------------------------------------
-
-    public String name(final Locale locale) {
+    public String displayName(final Locale locale) {
         Objects.requireNonNull(locale, "locale is null");
-        final var baseName = getClass().getName();
-        try {
-            final var bundle = ResourceBundle.getBundle(baseName, locale);
-            return bundle.getString(name());
-        } catch (final MissingResourceException mre) {
-            return name();
-        }
+        return localesAndDisplayNames.computeIfAbsent(locale, l -> {
+            try {
+                final var bundle = ResourceBundle.getBundle(getClass().getName(), l);
+                return bundle.getString(name());
+            } catch (final MissingResourceException mre) {
+                return name();
+            }
+        });
     }
 
     /**
@@ -67,4 +65,6 @@ public enum 天干 {
 
     // -----------------------------------------------------------------------------------------------------------------
     private io.github.jinahya.enums.philosophy.陰陽 陰陽;
+
+    private final Map<Locale, String> localesAndDisplayNames = new ConcurrentHashMap<>();
 }

@@ -1,9 +1,7 @@
 package io.github.jinahya.enums.philosophy;
 
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Constants of {@code Yin} and {@code Yang}.
@@ -27,13 +25,18 @@ public enum 陰陽 {
     陽;
 
     // -----------------------------------------------------------------------------------------------------------------
-    public String name(final Locale locale) {
+    public String displayName(final Locale locale) {
         Objects.requireNonNull(locale, "locale is null");
-        try {
-            final var bundle = ResourceBundle.getBundle(getClass().getName(), locale);
-            return bundle.getString(name());
-        } catch (final MissingResourceException mre) {
-            return name();
-        }
+        return localesAndDisplayNames.computeIfAbsent(locale, l -> {
+            try {
+                final var bundle = ResourceBundle.getBundle(getClass().getName(), l);
+                return bundle.getString(name());
+            } catch (final MissingResourceException mre) {
+                return name();
+            }
+        });
     }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    private final Map<Locale, String> localesAndDisplayNames = new ConcurrentHashMap<>();
 }
