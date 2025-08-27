@@ -1,5 +1,6 @@
 package io.github.jinahya.enums.ordinal;
 
+import java.time.LocalTime;
 import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -57,6 +58,13 @@ public enum 地支 {
         });
     }
 
+    public LocalTime time() {
+        if (time == null) {
+            time = LocalTime.of(ordinal() * 2, 0).minusHours(1L);
+        }
+        return time;
+    }
+
     /**
      * Returns the value of {@link io.github.jinahya.enums.philosophy.陰陽} associated with this value.
      *
@@ -72,7 +80,9 @@ public enum 地支 {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    private io.github.jinahya.enums.philosophy.陰陽 陰陽;
-
     private final Map<Locale, String> localesAndNames = new ConcurrentHashMap<>();
+
+    private LocalTime time;
+
+    private io.github.jinahya.enums.philosophy.陰陽 陰陽;
 }

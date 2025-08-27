@@ -16,49 +16,32 @@ import java.util.concurrent.ConcurrentHashMap;
  * @see <a href="https://zh.wikipedia.org/wiki/%E4%BA%94%E8%A1%8C">五行</a> (Wikipedia)
  * @see <a href="https://ko.wikipedia.org/wiki/%EC%98%A4%ED%96%89">오행</a> (Wikipedia)
  */
-// https://www.compart.com/en/unicode/block/U+1F300
-// https://www.compart.com/en/unicode/block/U+1F700 (Alchemical Symbols)
-// https://www.compart.com/en/unicode/block/U+3200 (Enclosed CJK Letters and Months)
 @SuppressWarnings({"NonAsciiCharacters", "java:S115"})
 public enum 五行 {
 
     /**
      * Wood.
      */
-    // https://www.compart.com/en/unicode/block/U+1F300
-    // https://www.compart.com/en/unicode/U+1F332 (Evergreen Tree \ Miscellaneous Symbols and Pictographs)
-    // https://www.compart.com/en/unicode/U+328D (Enclosed CJK Letters and Months)
     木,
 
     /**
      * Fire.
      */
-    // https://www.compart.com/en/unicode/U+1F525 (Miscellaneous Symbols and Pictographs)
-    // https://www.compart.com/en/unicode/U+1F702 (Alchemical Symbols)
-    // https://www.compart.com/en/unicode/U+328B (Enclosed CJK Letters and Months)
     火,
 
     /**
      * Earth.
      */
-    // https://www.compart.com/en/unicode/U+1F30F (Miscellaneous Symbols and Pictographs)
-    // https://www.compart.com/en/unicode/U+1F703 (Alchemical Symbols)
-    // https://www.compart.com/en/unicode/U+328F (Enclosed CJK Letters and Months)
     土,
 
     /**
      * Metal.
      */
-    // https://www.compart.com/en/unicode/U+1F71A (Alchemical Symbols)
-    // https://www.compart.com/en/unicode/U+328E (Enclosed CJK Letters and Months)
     金,
 
     /**
      * Water.
      */
-    // https://www.compart.com/en/unicode/U+1F30A
-    // https://www.compart.com/en/unicode/U+1F704 (Alchemical Symbols)
-    // https://www.compart.com/en/unicode/U+328C (Enclosed CJK Letters and Months)
     水;
 
     // -----------------------------------------------------------------------------------------------------------------

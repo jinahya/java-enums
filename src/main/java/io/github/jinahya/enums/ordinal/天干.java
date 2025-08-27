@@ -1,5 +1,6 @@
 package io.github.jinahya.enums.ordinal;
 
+import java.time.LocalTime;
 import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -41,6 +42,12 @@ public enum 天干 {
     癸; // 계
 
     // -----------------------------------------------------------------------------------------------------------------
+    public static 天干 valueOf(final LocalTime time) {
+        Objects.requireNonNull(time, "time is null");
+        return null;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
     public String name(final Locale locale) {
         Objects.requireNonNull(locale, "locale is null");
         return localesAndNames.computeIfAbsent(locale, l -> {
@@ -68,7 +75,7 @@ public enum 天干 {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    private io.github.jinahya.enums.philosophy.陰陽 陰陽;
-
     private final Map<Locale, String> localesAndNames = new ConcurrentHashMap<>();
+
+    private io.github.jinahya.enums.philosophy.陰陽 陰陽;
 }

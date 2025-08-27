@@ -35,7 +35,6 @@ class 地支Test {
         }).doesNotThrowAnyException();
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
     @DisplayName("ko")
     @MethodSource({"valueStream"})
     @ParameterizedTest
@@ -43,5 +42,14 @@ class 地支Test {
         final var locale = ThreadLocalRandom.current().nextBoolean() ? Locale.of("ko") : Locale.KOREAN;
         final var name = value.name(locale);
         log.debug("value: {}, name: {}", value, name);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @DisplayName("ko")
+    @MethodSource({"valueStream"})
+    @ParameterizedTest
+    void time__(final 地支 value) {
+        final var time = value.time();
+        log.debug("value: {}, time: {}", value, time);
     }
 }
